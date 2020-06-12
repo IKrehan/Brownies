@@ -8,6 +8,20 @@ html {
 }
 
 
+.media-social{
+width: 10%;
+height: 10%;
+margin-left:205% ;
+}
+
+.media-social2{
+width: 10%;
+height: 10%;
+margin-left: 100%;
+
+
+}
+
 /* ---------- Serviços ----------*/
 .serviços {
     background-color: #202020;
