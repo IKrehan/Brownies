@@ -4,7 +4,7 @@ html {
 }
 
 .nav-link:hover {
-    color: #f07d30 !important;
+    color: #2b1d11 !important;
 }
 
 
@@ -18,17 +18,16 @@ margin-left:205% ;
 width: 10%;
 height: 10%;
 margin-left: 100%;
-
-
 }
 
 /* ---------- Serviços ----------*/
 .serviços {
-    background-color: #202020;
+    background-color: #ece6cf;
 }
 
 .title-serv h1 {
-    color: white;
+    font-family: 'Chewy', cursive;
+    color: #2b1d11;
     margin-top: 2%;
 }
 
@@ -40,7 +39,8 @@ margin-left: 100%;
 }
 
 .box-serv {
-    color: white;
+    font-family: 'Chewy', cursive;
+    color: #2b1d11;
     margin-top: 7%;
     margin-bottom: 10%;
 }
