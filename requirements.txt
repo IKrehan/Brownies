@@ -1,4 +1,0 @@
-Flask
-flask_migrate
-flask_sqlalchemy
-gunicorn==20.0.4
