@@ -71,7 +71,6 @@ html {
 .box-brown h4 {
     margin-top: 6%;
 }
-/* ------------------------------*/
 
 /* --------- Assinaturas ---------*/
 
@@ -93,9 +92,22 @@ html {
     margin-top: -.2%;
 }
 
-.gallery {
+.box-assinaturas {
+    font-family: 'Chewy', cursive;
+    color: #ece6cf;
+}
+
+.box-assinaturas h4 {
+    margin-top: 5%;
+    margin-bottom: 1%;
+}
+
+.assinaturas-gallery {
     margin-top: 7%;
-    margin-bottom: 5%;
+}
+
+.assinaturas-last{
+    margin-top: 3%;
 }
 
 /* --------- Footer ------------*/
