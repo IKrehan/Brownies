@@ -23,136 +23,91 @@ html {
     color: #2b1d11 !important;
 }
 
+.encomenda {
+    margin-top: 10%;
+}
+
+/* ----------- Home -----------*/
+
 .social-icon {
-    width: 30%;
+    width: 70%;
     position: absolute;
 }
 
 .instagram {
-    margin-top: -10%;
+    margin-top: -20%;
 }
 
 .whatsapp {
+    margin-top: -20%;
+}
+/* ---------- Brownies ----------*/
+
+.brownies {
+    background-color: #ece6cf;
     margin-top: -10%;
 }
-/* ---------- Serviços ----------*/
-.serviços {
-    background-color: #ece6cf;
-}
 
-.title-serv h1 {
+.title-brown h1 {
     font-family: 'Chewy', cursive;
     color: #2b1d11;
     margin-top: 2%;
 }
 
-.title-serv hr {
+.title-brown hr {
     background-color: #2b1d11;
     height: 1px;
     width: 3%;
     margin-top: -.2%;
 }
 
-.box-serv {
+.box-brown {
     font-family: 'Chewy', cursive;
     color: #2b1d11;
     margin-top: 7%;
     margin-bottom: 10%;
 }
 
-.box-serv h4 {
+.box-brown h4 {
     margin-top: 6%;
 }
 /* ------------------------------*/
 
-/* ------- Nosso Trabalho -------*/
-.title-trabalho {
-        margin-top: 3%;
+/* --------- Assinaturas ---------*/
+
+.assinaturas {
+    background-color: #453022;
+    margin-top: -10%;
 }
 
-.title-trabalho hr {
-    background-color: black;
-    height: .5px;
-    width: 40%;
+.title-assinaturas {
+    margin-top: 2%;
+    font-family: 'Chewy', cursive;
+    color: #ece6cf;
 }
 
-.line1 {
-    margin-right: 120%;
-    margin-top: -1.5%;
-}
-
-.line2 {
-    margin-left: 60%;
-    margin-top: -1%;
+.title-assinaturas hr {
+    background-color: #ece6cf;
+    height: 1px;
+    width: 3%;
+    margin-top: -.2%;
 }
 
 .gallery {
     margin-top: 7%;
     margin-bottom: 5%;
 }
-/* ------------------------------*/
 
-/* ----------- Contato -----------*/
-
-.title-contato hr {
-    background-color: black;
-    height: .5px;
-    width: 40%;
-}
-
-.info-contato {
-    margin-top: 5%;
-    margin-bottom: 4%;
-}
-
-.info-contato div h3 {
-    margin-bottom: 4%;
-}
-/* ------------------------------*/
+/* --------- Footer ------------*/
 
 footer {
-    background-color: #202020;
+    background-color: #2b1d11;
     height: 8em;
 }
 
 .copyright h6 {
     margin-top: 2%;
-    color: gray;
+    color: #ece6cf;
 }
 
 /* ------------------------------*/
-
-/* -------- Agendamento --------*/
-
-.title-agenda {
-    margin-top: 4%;
-    color: black;
-}
-
-.title-agenda hr {
-    background-color: #f07d30;
-    height: 1px;
-    width: 7%;
-    margin-top: -.2%;
-}
-
-/* ------------------------------*/
-.card {
-    margin-top: 6.4%;
-    width: 70%;
-    margin-bottom: 20%;
-}
-
-/* -------------------------------*/
-/* ----------- Reserva -----------*/
-
-.forms {
-    margin-top: 5%;
-    margin-bottom: 2.4%;
-}
-.agendar {
-    margin-top: 2%;
-}
-.hours {
-    margin-top: 10%;
-}
