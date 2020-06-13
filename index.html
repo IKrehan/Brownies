@@ -21,39 +21,50 @@
 <body>
 
         <main>
-            <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item px-5">
-                            <a class="nav-link" href="/#home">Home</a>
-                        </li>
-                        <li class="nav-item px-5">
-                            <a class="nav-link" href="/#serviços">Brownies</a>
-                        </li>
-                        <li class="nav-item px-5">
-                            <a class="nav-link" href="/#nosso-trabalho">Nosso Trabalho</a>
-                        </li>
-                         <li class="nav-item px-5">
-                            <a class="nav-link" href="https://www.instagram.com/ph.brownies/"><img  class=" media-social" src="./static/img/instagram_logo.png"></a>
-                        </li>
-                        <li class="nav-item px-5">
-                            <a class="nav-link" href="https://api.whatsapp.com/send?phone=558599930884&text=&source=&data=&app_absent="><img  class=" media-social2" src="static/img/whatsapp_logo.png"></a>
-                        </li>
+            <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+                <div class="collapse navbar-collapse row justify-content-between id="navbarNav">
 
+                    <a class="navbar-brand col-6 mx-auto" href="#">
+                        <img src="static/img/logo.png" width="135" height="41.4" class="d-inline-block align-top" loading="lazy">
+                    </a>
+
+                    <ul class="navbar-nav col-5">
+                        <li class="nav-item px-3">
+                            <a class="nav-link active" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link active" href="#brownies">Brownies</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link active" href="#assinaturas">Assinaturas</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
 
    <section id="home" class="home">
         <div class="background-home">
-            <img class="img-fluid bg-home" src="static/img/backgroundHome.png">
+            <img class="img-fluid bg-home" src="static/img/bg.jpg">
         </div>
 
+        <div class="social-media row justify-content-start mx-auto">
+            <div class="instagram col-2">
+                <a href="https://www.instagram.com/ph.brownies/">
+                    <img class="social-icon" src="static/img/instagram_logo.png" alt="">
+                </a>
+            </div>
+
+            <div class="whatsapp col-2">
+                <a href="https://api.whatsapp.com/send?phone=558599930884&text=&source=&data=&app_absent=">
+                    <img class="social-icon" src="static/img/whatsappLogo.png" alt="">
+                </a>
+            </div>
+        </div>
     </section>
 
     <section id="brownies" class="serviços container-fluid">
 
-        <div style="color:#ece6cf;">.</div>
+        <div style="color:#ece6cf; margin-top: 10%;">.</div>
 
         <div class="title-serv">
             <h1 class="font-weight-light text-center">Opções de Brownie</h1>
@@ -95,28 +106,6 @@
 
         </div>
 
-    </section>
-
-    <section id="contato" class="contato container-fluid">
-        <div class="title-contato">
-            <h1 class="font-weight-light text-center">Contato</h1>
-            <hr class="line1">
-            <hr class="line2">
-        </div>
-
-        <div class="row info-contato">
-            <div class="col-6 border-right">
-                <h3 class="font-weight-light text-center">Av. Bernadino Campos, 98</h3>
-                <h3 class="font-weight-light text-center">Info@site.com</h3>
-                <h3 class="font-weight-light text-center">Tel:(85) 3466-5678</h3>
-            </div>
-            <div class="col-6">
-                <h3 class="font-weight-light text-center">Horário de Funcionamento</h3>
-                <h3 class="font-weight-light text-center">Seg-Sex: 7:00 - 22:00</h3>
-                <h3 class="font-weight-light text-center">Sábados: 8:00 - 20:00</h3>
-                <h3 class="font-weight-light text-center">Domingos: 8:00 - 13:00</h3>
-            </div>
-        </div>
     </section>
 
     <footer class="footer">
