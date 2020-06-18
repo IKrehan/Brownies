@@ -1,8 +1,8 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: 'Chewy', cursive;
     background-image: url(../img/imagem_fundo.jpg);
+    background-repeat: no-repeat;
 }
 
 .box h1{
@@ -19,9 +19,13 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-   background-image: url(../img/imagem_fundo_login.jpg);
     text-align: center;
     border-radius: 20px;
+}
+
+.box h1{
+    font-family: 'Chewy', cursive;
+    color: #e9deb5;
 }
 
 .box input[type="text"],.box input[type="password"]{
@@ -37,21 +41,21 @@ body{
     border-radius: 24px;
     transition: 0.25s;
     font: 10px;
-    background-color: #2b1d11;
+    background-color: white;
 }
 
 .box input[type="password"],.box input[type="text"]{
     width: 200px;
-    border-color: #2b1d11;
+    border-color: white;
 }
 
 .box input[type = "submit"]{
+    width: 25%;
     border:0;
     background: none;
     display:block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid #3498db;
     padding: 14px 10px;
     outline: none;
     color: white;
@@ -63,8 +67,4 @@ body{
 
 .box input[type="submit"]:hover{
     background: #2ecc71;
-}
-
-::placeholder{
-    color: black;
 }

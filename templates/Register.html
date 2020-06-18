@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../static/css/Register.css">
-    <title>Cadastro</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/Register.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='img/icon.ico') }}" type="image/x-icon" />
+
+    <title>PH Brownies - Cadastro</title>
 </head>
 <body>
-    <form class="box" action="index.html" method="POST">
-        <h1>Registro</h1>
-        <input type="text" name="" placeholder="Nome">
-        <input type="text" name="" placeholder="sobrenome">
-        <input type="text" name="" placeholder="E-mail">
-        <input type="text" name="" placeholder="Telefone">
+    <form class="box" action="{{ url_for('homepage') }}" method="POST">
+        <h1>Cadastro</h1>
+        <input type="text" name="name" placeholder="Nome" required>
+        <input type="text" name="surname" placeholder="Sobrenome" required>
+        <input type="text" name="email" placeholder="E-mail" required>
+        <input type="text" name="telephone" placeholder="Telefone" required>
+        <input  class="senha-login" type="password" name="password" placeholder="Senha" required>
 
-        <input  class="senha-login"type="password" name="" placeholder="senha">
-        <input type="submit" name="" value="Login">
+        <input type="submit" value="Login">
     </form>
     
 </body>

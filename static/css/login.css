@@ -1,29 +1,26 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: 'Chewy', cursive;
     background-image: url(../img/imagem_fundo.jpg);
+    background-repeat: no-repeat;
 }
 
 .tela-login{
     position: center;
-
 }
 
 .box h1{
-    color: white;
-    text-transform: uppercase;
-    font-weight: 500;
-
+    color: #e9deb5;
+    font-family: 'Chewy', cursive;
 }
+
 .box{
-    width: 400px;
+    width: 50%;
     padding: 40px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-   background-image: url(../img/imagem_fundo_login.jpg);
     text-align: center;
     border-radius: 20px;
 }
@@ -34,29 +31,31 @@ body{
     display:block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid #2587d3;
     padding: 14px 10px;
     outline: none;
     color:black;
     border-radius: 24px;
     transition: 0.25s;
-    background-color:#2b1d11;
-    border-color: #2587d3;
-
+    background-color: white;
 }
 
 .box input[type="password"],.box input[type="text"]{
-    width: 200px;
+    width: 40%;
+    min-width: 200px;
+}
 
+.signup-alert {
+    font-weight: bolder;
 }
 
 .box input[type = "submit"]{
+    width: 25%;
+    min-width: 100px;
     border:0;
     background: none;
     display:block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid #3498db;
     padding: 14px 10px;
     outline: none;
     color: white;
@@ -64,15 +63,8 @@ body{
     transition: 0.25s;
     cursor:pointer;
     background-color: #3498db;
-
-
 }
+
 .box input[type="submit"]:hover{
     background: #2ecc71;
-   
-
-
-}
-::placeholder{
-    color: black;
 }
