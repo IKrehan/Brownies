@@ -6,14 +6,13 @@ body{
 }
 
 .box h1{
-    color: white;
-    text-transform: uppercase;
-    font-weight: 500;
+    color: #3498db;
+    font-family: 'Chewy', cursive;
 
 }
 
 .box{
-    width: 400px;
+    width: 20%;
     padding: 40px;
     position: absolute;
     top: 50%;
@@ -21,35 +20,27 @@ body{
     transform: translate(-50%, -50%);
     text-align: center;
     border-radius: 20px;
+    background-color: white;
 }
 
-.box h1{
-    font-family: 'Chewy', cursive;
-    color: #e9deb5;
-}
 
-.box input[type="text"],.box input[type="password"]{
+.box input {
     border:0;
+    width: 70%;
+    min-width: 200px;
     background: none;
     display:block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid #0c141a;
     padding: 14px 10px;
     outline: none;
     color:black;
     border-radius: 24px;
     transition: 0.25s;
-    font: 10px;
-    background-color: white;
+    background-color: #e6e6e6;
 }
 
-.box input[type="password"],.box input[type="text"]{
-    width: 200px;
-    border-color: white;
-}
-
-.box input[type = "submit"]{
+.box input[type = "submit"] {
     width: 25%;
     border:0;
     background: none;
@@ -67,4 +58,21 @@ body{
 
 .box input[type="submit"]:hover{
     background: #2ecc71;
+}
+
+.notification {
+    margin: auto;
+    width: 70%;
+    min-width: 200px;
+    border-radius: 15px;
+    font-size: .9em;
+
+    background-color: red;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+.notification label {
+    margin-left: 2px;
+    margin-right: 2px;
 }
