@@ -1,6 +1,7 @@
 from flask import Flask
 
 from .extensions import db, login_manager
+from .models import Product
 
 
 def create_app(config_file='config.py'):
@@ -29,5 +30,14 @@ def create_app(config_file='config.py'):
 
     from .auth import auth
     app.register_blueprint(auth)
+
+
+    # with app.app_context():
+    #     db.create_all()
+
+    #     a = Product(title='petit gateu', img='img/petitGateu.png', desc='teste', price=12)
+    #     db.session.add(a)
+    #     db.session.commit()
+    #     print('Comandos Executados')
 
     return app

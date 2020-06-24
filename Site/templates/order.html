@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PH Brownies - Encomenda</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/order.css') }}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/43fb59542f.js" crossorigin="anonymous"></script>
+
+    <link rel="icon" href="{{ url_for('static', filename='img/icon.ico') }}" type="image/x-icon" />
+</head>
+
+<body class="row">
+
+    <div class="encomenda-form mx-auto align-middle">
+        <div class="box mx-auto align-middle">
+            <form class="form-row" action="/encomenda" method="POST">
+                <h1 class="text-center col-12">Encomenda</h1>
+
+                <div class="form-group col-9">
+                    <input type="text" class="form-control" name="address" id="address" placeholder="Endereço" required>
+                </div>
+
+                <div class="form-group col-2">
+                    <input type="text" class="form-control" name="number" id="number" placeholder="Número" required>
+                </div>      
+
+                <div class="form-group col-5">
+                    <input type="text" class="form-control" name="district" id="district" placeholder="Bairro" required>
+                </div>
+
+                <div class="form-group col-3">
+                    <input type="text" class="form-control" name="CEP" id="CEP" placeholder="CEP" required>
+                </div>  
+
+                <div class="form-group col-12">
+                    <h3>Opções de Brownies</h3>
+                    <hr>
+                </div>
+
+                {% for product in products %}
+
+                <div class="form-group col-sm-12 col-md-6 col-lg-6 px-4 py-4">
+                    <h5 class="font-weight-light text-center py-2">{{ product.title }}</h5>
+
+                    <label class="image-checkbox">
+                        <img class="img-fluid mx-auto d-block" src="{{ url_for('static', filename=product.img) }}">
+                        <input class="form-check-input " type="checkbox" name="brownie-tipo" id="brownie-tipo" value="Quantidade">
+                    </label>
+
+                    <select class="form-control w-75 my-2" id="quantidade">
+                        <option selected disabled>Quantidade</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+
+                </div>
+    
+                {% endfor %}
+
+                <input type="submit" name="" value="Encomendar">
+            </form>
+        </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+</html>

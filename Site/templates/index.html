@@ -39,7 +39,7 @@
                             <a class="nav-link active" href="{{ url_for('views.homepage') }}#assinaturas">Assinaturas</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a type="button" class="encomenda btn btn-success" href="{{ url_for('views.encomenda') }}">Encomendar</a>
+                            <a type="button" class="encomenda btn btn-success" href="{{ url_for('views.order') }}">Encomendar</a>
                         </li>
                     </ul>
                 </div>
@@ -75,26 +75,15 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="box-brown col-2">
-                <img class="img-fluid mx-auto d-block" src="{{ url_for('static', filename='img/browniePadrão.jpg') }}">
-                <h4 class="font-weight-light text-center">Brownie Padrão</h4>
-            </div>
+
+            {% for product in products %}
 
             <div class="box-brown col-2">
-                <img class="img-fluid mx-auto d-block" src="{{ url_for('static', filename='img/brownieLatinha.jpg') }}">
-                <h4 class="font-weight-light text-center">Brownies na latinha</h4>
+                <img class="img-fluid mx-auto d-block" src="{{ url_for('static', filename=product.img) }}">
+                <h4 class="font-weight-light text-center">{{ product.title }}</h4>
             </div>
 
-            <div class="box-brown col-2">
-                <img class="img-fluid mx-auto d-block" src="{{ url_for('static', filename='img/brownie40g.jpg') }}">
-                <h4 class="font-weight-light text-center">Brownie 40g</h4>
-            </div>
-
-            <div class="box-brown col-2">
-                <img class="img-fluid mx-auto d-block" src="{{ url_for('static', filename='img/brownieBrigadeiro.jpg') }}">
-                <h4 class="font-weight-light text-center">Brownie na forminha de brigadeiro</h4>
-            </div>
-
+            {% endfor %}
         </div>
     </section>
 

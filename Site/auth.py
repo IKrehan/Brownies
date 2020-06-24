@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from .extensions import render_template, url_for, redirect, request, flash, generate_password_hash, check_password_hash, login_user, logout_user
+from .extensions import render_template, url_for, redirect, request, flash, generate_password_hash, check_password_hash, login_user, logout_user, login_required
 from .models import db, User
 
 auth = Blueprint('auth', __name__)
@@ -43,18 +43,19 @@ def login():
 @auth.route('/login', methods=['POST'])
 def login_post():
 
-    email = request.form.get('email')
-    password = request.form.get('password')
-    remember = True if request.form.get('remember') else False
+    if request.method == "POST":
+        email = request.form.get('email')
+        password = request.form.get('password')
+        remember = True if request.form.get('remember') else False
 
-    user = User.query.filter_by(email=email).first()
+        user = User.query.filter_by(email=email).first()
 
-    if not user or not check_password_hash(user.password, password):
-        flash('Email ou senha incorretos. Tente Novamente')
-        return redirect(url_for('auth.login')) # if user doesn't exist or password is wrong, reload the page
+        if not user or not check_password_hash(user.password, password):
+            flash('Email ou senha incorretos. Tente Novamente')
+            return redirect(url_for('auth.login')) # if user doesn't exist or password is wrong, reload the page
 
-    login_user(user, remember=remember)
-    return redirect(url_for('views.encomenda'))
+        login_user(user, remember=remember)
+    return redirect(url_for('views.order'))
     
 
 
