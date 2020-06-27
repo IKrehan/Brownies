@@ -16,6 +16,7 @@
     <script src="https://kit.fontawesome.com/43fb59542f.js" crossorigin="anonymous"></script>
 
     <link rel="icon" href="{{ url_for('static', filename='img/icon.ico') }}" type="image/x-icon" />
+
 </head>
 
 <body class="row">
@@ -26,19 +27,23 @@
                 <h1 class="text-center col-12">Encomenda</h1>
 
                 <div class="form-group col-9">
-                    <input type="text" class="form-control" name="address" id="address" placeholder="Endereço" required>
-                </div>
-
-                <div class="form-group col-2">
-                    <input type="text" class="form-control" name="number" id="number" placeholder="Número" required>
-                </div>      
-
-                <div class="form-group col-5">
-                    <input type="text" class="form-control" name="district" id="district" placeholder="Bairro" required>
+                    <input class="form-control" type="text" size="60" name="street" id="street" placeholder="Endereço" required>
                 </div>
 
                 <div class="form-group col-3">
-                    <input type="text" class="form-control" name="CEP" id="CEP" placeholder="CEP" required>
+                    <input class="form-control" type="text" name="number" id="number" placeholder="Número" required>
+                </div>      
+
+                <div class="form-group col-4">
+                    <input class="form-control" type="text" size="40" name="district" id="district" placeholder="Bairro" required>
+                </div>
+
+                <div class="form-group col-4">
+                    <input class="form-control" type="text" size="40" name="city" id="city" placeholder="Cidade" required>
+                </div>
+
+                <div class="form-group col-4">
+                    <input class="form-control" type="text" size="10" maxlength="9" name="cep" id="cep" placeholder="Cep" autofocus required>
                 </div>  
 
                 <div class="form-group col-12">
@@ -46,37 +51,48 @@
                     <hr>
                 </div>
 
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="col-12 notification">
+                        {{ messages[0] }}
+                    </div>  
+                {% endif %}
+                {% endwith %}
+
                 {% for product in products %}
 
                 <div class="form-group col-sm-12 col-md-6 col-lg-6 px-4 py-4">
-                    <h5 class="font-weight-light text-center py-2">{{ product.title }}</h5>
+                    <h5 class="font-weight-light text-center">{{ product.title }}</h5>
+                    {% set price = product.price|string %}
+                    <h6 class="font-weight-light text-center">R${{ price.replace('.', ',') }}</h6>
 
                     <label class="image-checkbox">
                         <img class="img-fluid mx-auto d-block" src="{{ url_for('static', filename=product.img) }}">
-                        <input class="form-check-input " type="checkbox" name="brownie-tipo" id="brownie-tipo" value="Quantidade">
+
+                        <div>
+                            <div class="py-1">
+                                <input class="form-check-input col-3" type="checkbox" name="brownie-type{{ loop.index }}" id="brownie-tipo" value="{{ product.title }}">
+                            </div>
+
+                            <input type="number" class="form-control w-50 col-6 my-1" min="0" name='quantity{{ loop.index }}' placeholder="Quantidade" id="quantity">
+                        </div>
+
                     </label>
 
-                    <select class="form-control w-75 my-2" id="quantidade">
-                        <option selected disabled>Quantidade</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
 
                 </div>
-    
                 {% endfor %}
+                
 
                 <input type="submit" name="" value="Encomendar">
             </form>
         </div>
     </div>
-
     
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -84,5 +100,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+
+    <script  type="text/javascript" src="{{ url_for('static', filename='js/cep-autocomplete.js') }}"></script>
+
 </body>
 </html>

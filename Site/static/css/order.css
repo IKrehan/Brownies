@@ -42,6 +42,19 @@ body.row {
     background-color: #e6e6e6;
 }
 
+.notification {
+    margin: auto;
+    width: 45%;
+    min-width: 200px;
+    border-radius: 15px;
+    font-size: .9em;
+
+    background-color: red;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+
 .box input[type = "submit"]{
     width: 25%;
     min-width: 150px;
@@ -59,6 +72,6 @@ body.row {
     background-color: #3498db;
 }
 
-.box input[type="submit"]:hover{
+.box input[type="submit"]:hover {
     background: #2ecc71;
 }
