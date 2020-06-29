@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PH Brownies - Pagamento</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/payment.css') }}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/43fb59542f.js" crossorigin="anonymous"></script>
+
+    <link rel="icon" href="{{ url_for('static', filename='img/icon.ico') }}" type="image/x-icon" />
+
+</head>
+
+<body class="row">
+
+    <div class="encomenda-form mx-auto align-middle">
+        <div class="box mx-auto align-middle">
+            <form class="form-row" action="/encomenda" method="POST">
+                <h1 class="text-center col-12">Pagamento</h1>
+
+                <div class="form-group col-12 itens-box">
+                    <div class="row">
+                        <h5 class="col-8">Produto</h5>
+                        <h5 class="col-2 text-center">Quantidade</h5>
+                        <h5 class="col-2 text-center">Valor</h5 >
+                    </div>
+                    <hr>
+                </div>
+
+                {% for product in products %}
+                
+                <div class="form-group col-12">
+                    <div class="row">
+                        <h5 class="product-name col-8">{{ product }}</h5>
+                        <h5 class="product-quantity col-2 text-center">{{ quantity[loop.index-1] }}</h5>
+                        {% set price = (quantity[loop.index-1]|float * prices[loop.index-1]|float) %}
+                        {% set price = "%.2f"|format(price)|string %}
+                        <h5 class="product-price col-2 text-center">R${{ price.replace('.', ',') }}</h5 >
+                    </div>
+                    <hr>
+                </div>
+
+                {% endfor %} 
+
+
+                <div class="form-group col-12 subtotal-box">
+                    <div class="row justify-content-between py-2">
+                        <h5 class="product-name col-8">Subtotal</h5>
+                        {% set subtotal = "%.2f"|format(subtotal)|string %}
+                        <h5 class="product-price col-2 text-center">R${{ subtotal.replace('.', ',') }}</h5 >
+                    </div>
+                </div>
+
+
+                <input type="submit" name="" value="Encomendar">
+            </form>
+        </div>
+    </div>
+    
+
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+    <script  type="text/javascript" src="{{ url_for('static', filename='js/cep-autocomplete.js') }}"></script>
+
+</body>
+</html>
