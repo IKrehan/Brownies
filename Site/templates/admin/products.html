@@ -1,0 +1,39 @@
+{% extends 'admin/base.html' %}
+
+{% block page %}
+
+<div class="box mx-auto">
+    <div class="title">
+        <h1>Produtos</h1>
+        <hr>
+    </div>
+
+    {% for product in products %}
+        <div class="card product-box">
+            <div class="card-body row">
+                <div class="col-1">
+                    <span>{{ product.id }}</span>
+                </div>
+
+                <div class="col-4">
+                    <span>{{ product.title }}</span>
+                </div>
+
+                <div class="col-2">
+                    <span>{{ product.img }}</span>
+                </div>
+
+                <div class="col-3">
+                    <span>{{ product.desc }}</span>
+                </div>
+
+                <div class="col-2">
+                    <span>R${{ ("%.2f"|format(product.price)|string).replace('.', ',') }}</span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

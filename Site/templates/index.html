@@ -29,18 +29,37 @@
                     </a>
 
                     <ul class="navbar-nav col-5">
-                        <li class="nav-item px-3">
-                            <a class="nav-link active" href="{{ url_for('views.homepage') }}#home">Home</a>
+                        <li class="nav-item px-3 my-auto">
+                            <a class="nav-link active nav-text" href="{{ url_for('views.homepage') }}#home">Home</a>
                         </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link active" href="{{ url_for('views.homepage') }}#brownies">Brownies</a>
+
+                        <li class="nav-item px-3 my-auto">
+                            <a class="nav-link active nav-text" href="{{ url_for('views.homepage') }}#brownies">Brownies</a>
                         </li>
-                        <li class="nav-item px-3">
-                            <a class="nav-link active" href="{{ url_for('views.homepage') }}#assinaturas">Assinaturas</a>
+
+                        <li class="nav-item px-3 my-auto">
+                            <a class="nav-link active nav-text" href="{{ url_for('views.homepage') }}#assinaturas">Assinaturas</a>
                         </li>
-                        <li class="nav-item px-3">
-                            <a type="button" class="encomenda btn btn-success" href="{{ url_for('views.order') }}">Encomendar</a>
+
+                        <li class="nav-item px-3 my-auto">
+                            <a class="nav-link active" href="https://www.instagram.com/ph.brownies/"><i class="fab fa-instagram fa-2x"></i></a>
                         </li>
+
+                        <li class="nav-item px-3 my-auto">
+                            <a class="nav-link active" href="https://api.whatsapp.com/send?phone=558599930884&text=&source=&data=&app_absent="><i class="fab fa-whatsapp fa-2x"></i></a>
+                        </li>
+
+                        {% if current_user.is_authenticated: %}
+                            <li class="nav-item px-3 my-auto">
+                                <a class="logout py-auto" href="/logout">Deslogar</a>
+                            </li>
+                        {% endif %}
+
+                        {% if not current_user.is_authenticated: %}
+                        <li class="nav-item px-3 my-auto">
+                            <a class="logout py-auto" href="/login">Login</a>
+                        </li>
+                    {% endif %}
                     </ul>
                 </div>
             </nav>
@@ -50,19 +69,12 @@
             <img class="img-fluid bg-home" src="{{ url_for('static', filename='img/bg.jpg') }}">
         </div>
 
-        <div class="social-media px-5 row justify-content-start mx-auto">
-            <div class="instagram col-1">
-                <a href="https://www.instagram.com/ph.brownies/">
-                    <img class="social-icon" src="{{ url_for('static', filename='img/instagram_logo.png') }}" alt="">
-                </a>
-            </div>
-
-            <div class="whatsapp col-1">
-                <a href="https://api.whatsapp.com/send?phone=558599930884&text=&source=&data=&app_absent=">
-                    <img class="social-icon" src="{{ url_for('static', filename='img/whatsappLogo.png') }}" alt="">
-                </a>
-            </div>
+        <div class="banner-btn">
+            <h1 class="">Os melhores brownies<br> de Fortaleza!</h1>
+            <h4>Peça o seu e experimente!</h4>
+            <a type="button" class="encomenda btn btn-lg btn-success" href="{{ url_for('views.order') }}">Encomendar</a>
         </div>
+
     </section>
 
     <section id="brownies" class="brownies container-fluid">

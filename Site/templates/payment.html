@@ -35,13 +35,13 @@
                     <hr>
                 </div>
 
-                {% for product in products %}
+                {% for product, quantity in orders.items() %}
                 
                 <div class="form-group col-12">
                     <div class="row">
-                        <h5 class="product-name col-8">{{ product }}</h5>
-                        <h5 class="product-quantity col-2 text-center">{{ quantity[loop.index-1] }}</h5>
-                        {% set price = (quantity[loop.index-1]|float * prices[loop.index-1]|float) %}
+                        <h5 class="product-name col-8">{{ product }} (R${{ ("%.2f"|format(prices[product])|string).replace('.', ',') }})</h5>
+                        <h5 class="product-quantity col-2 text-center">{{ quantity }}</h5>
+                        {% set price = (quantity|float * prices[product]|float) %}
                         {% set price = "%.2f"|format(price)|string %}
                         <h5 class="product-price col-2 text-center">R${{ price.replace('.', ',') }}</h5 >
                     </div>

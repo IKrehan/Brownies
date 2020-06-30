@@ -26,7 +26,7 @@ def signup_post():
         return redirect(url_for('auth.signup'))
 
     # create new user with the form data. Hash the password so plaintext version isn't saved.
-    new_user = User(name=name, surname=surname, email=email, phone=phone, password=generate_password_hash(password, method='sha256'))
+    new_user = User(role='user', name=name, surname=surname, email=email, phone=phone, password=generate_password_hash(password, method='sha256'))
 
     # add the new user to the database
     db.session.add(new_user)
@@ -55,7 +55,7 @@ def login_post():
             return redirect(url_for('auth.login')) # if user doesn't exist or password is wrong, reload the page
 
         login_user(user, remember=remember)
-    return redirect(url_for('views.order'))
+    return redirect(url_for('views.homepage'))
     
 
 

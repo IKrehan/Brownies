@@ -1,0 +1,43 @@
+{% extends 'admin/base.html' %}
+
+{% block page %}
+
+<div class="box mx-auto">
+    <div class="title">
+        <h1>Pedidos</h1>
+        <hr>
+    </div>
+
+    {% for order in orders %}
+        <div class="card product-box">
+            <div class="card-body row">
+                <div class="col-1">
+                    <span>{{ order.id }}</span>
+                </div>
+
+                <div class="col-3">
+                    <span>{{ order.street }}</span>
+                </div>
+
+                <div class="col-1">
+                    <span>{{ order.address_number }}</span>
+                </div>
+
+                <div class="col-2">
+                    <span>{{ order.district }}</span>
+                </div>
+
+                <div class="col-3">
+                    <span>{{ order.city }}</span>
+                </div>
+
+                <div class="col-2">
+                    <span>{{ order.cep }}</span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

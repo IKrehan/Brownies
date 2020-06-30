@@ -1,0 +1,43 @@
+{% extends 'admin/base.html' %}
+
+{% block page %}
+
+<div class="box mx-auto">
+    <div class="title">
+        <h1>Usuários</h1>
+        <hr>
+    </div>
+
+    {% for user in users %}
+        <div class="card product-box">
+            <div class="card-body row">
+                <div class="col-1">
+                    <span>{{ user.id }}</span>
+                </div>
+
+                <div class="col-2">
+                    <span>{{ user.role }}</span>
+                </div>
+
+                <div class="col-2">
+                    <span>{{ user.name }}</span>
+                </div>
+
+                <div class="col-2">
+                    <span>{{ user.surname }}</span>
+                </div>
+
+                <div class="col-3">
+                    <span>{{ user.email }}</span>
+                </div>
+
+                <div class="col-2">
+                    <span>{{ user.phone }}</span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

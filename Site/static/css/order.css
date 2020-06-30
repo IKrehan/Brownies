@@ -27,6 +27,10 @@ body.row {
     font-family: 'Chewy', cursive;
 }
 
+.form-group p {
+    color: grey;
+}
+
 .box {
     width: 80%;
     min-width: 300px;

@@ -5,10 +5,13 @@ html {
 
 .navbar {
     font-family: 'Chewy', cursive;
-    font-size: 1.5em;
     margin-bottom: -4%;
 
     background-image: linear-gradient(180deg,rgba(0,0,0,.46),transparent 89%);
+}
+
+.nav-text {
+    font-size: 1.5em;
 }
 
 .navbar-brand {
@@ -31,20 +34,40 @@ html {
     margin-top: 10%;
 }
 
+.logout {
+    font-size: .8em;
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+    text-decoration: none;
+}
+
 /* ----------- Home -----------*/
 
-.social-icon {
-    width: 70%;
+.banner-btn {
     position: absolute;
+    margin-top: -25%;
+    margin-left: 10%;
 }
 
-.instagram {
-    margin-top: -20%;
+.banner-btn a {
+    margin-top: -.1%;
+    font-family: 'Chewy', cursive;
+    font-size: 2em;
 }
 
-.whatsapp {
-    margin-top: -20%;
+.banner-btn h1 {
+    font-size: 4em;
+    font-family: 'Chewy', cursive;
+    color: #2b1d11;
+    text-shadow: 2px 2px #ece6cf;
 }
+
+.banner-btn h4 {
+    font-family: 'Chewy', cursive;
+    color: #ece6cf;
+    text-shadow: 2px 2px #2b1d11;
+}
+
 /* ---------- Brownies ----------*/
 
 .brownies {
