@@ -2,8 +2,65 @@
 
 {% block page %}
 
-<div class="container">
-        
+<div class="box mx-auto mt-4">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Pedidos</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ orders|length }} Pedidos</h6>
+                </div>
+                </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Produtos</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{  products|length }} Produtos Cadastrados</h6>
+                </div>
+                </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Usuários</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ users|length }} Usuários Cadastrados</h6>
+                </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="row mt-5 justify-content-center">
+        <div class="card col-12 text-center">
+            <h5 class="card-header">Pedidos com pagamento confirmado</h5>
+            <div class="card-body">
+              <h5 class="card-title">{{ paid }} Pedidos</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Ver todos</a>
+            </div>
+        </div>
+
+        <div class="card col-12 text-center mt-4">
+            <h5 class="card-header">Pedidos aguardando pagamento</h5>
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+        <div class="card col-12 text-center mt-4">
+            <h5 class="card-header">Pedidos enviados</h5>
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 {% endblock %}

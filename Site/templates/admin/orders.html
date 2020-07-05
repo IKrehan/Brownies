@@ -7,7 +7,6 @@
         <h1>Pedidos</h1>
         <hr>
     </div>
-
     {% for order in orders %}
         <div class="card product-box">
             <div class="card-body row">
@@ -19,7 +18,7 @@
                     <span>{{ order.street }}</span>
                 </div>
 
-                <div class="col-1">
+                <div class="col-2">
                     <span>{{ order.address_number }}</span>
                 </div>
 
@@ -27,13 +26,21 @@
                     <span>{{ order.district }}</span>
                 </div>
 
-                <div class="col-3">
-                    <span>{{ order.city }}</span>
-                </div>
-
                 <div class="col-2">
                     <span>{{ order.cep }}</span>
                 </div>
+
+                <div class="2">
+                    <span>{{ users[order.client_id-1].name }} {{ users[order.client_id-1].surname }}</span>
+                </div>
+
+                {% for item in itens %}
+                <div class='col-6'>
+                    <span>
+                        {{ item.quantity }}x{{ products[item.product_id-1].title }}
+                    </span>
+                </div>
+                {% endfor %}
             </div>
         </div>
     {% endfor %}
