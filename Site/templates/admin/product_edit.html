@@ -1,0 +1,60 @@
+{% extends 'admin/base.html' %}
+
+{% block page %}
+
+<div class="box mx-auto">
+        <div class="mx-auto">
+            <div class="title mt-5 mb-2">
+                <h1 class="d-inline ml-4">{{ product.title }}</h1>
+
+                <hr class="mx-auto">
+                <div class="modal fade" id="modalDelete{{ product.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="modalDelete{{ product.id }}Label">Deseja apagar este item?</h5>
+                        </div>
+                        <div class="modal-footer mx-auto">
+                          <a role="button" href="{{ url_for('views.admin_product_delete', id=product.id) }}" class="btn btn-danger">Apagar</a>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="mx-auto">
+            <form action="/admin/produtos/{{product.id}}/editar" enctype="multipart/form-data" method="POST">
+                <fieldset>
+                    <div class="form-row mx-auto">
+                            <div class="form-group col-md-7">
+                                <label for="title">Nome do Produto</label>
+                                <input type="text"  value = "{{ product.title }}" name="title" class="form-control" id="title" required>
+                            </div>
+
+                            <div class="form-group col-md-5">
+                                <label for="price">Valor do Produto</label>
+                                <input type="number" value="{{ product.price }}" step="any" name="price" class="form-control" id="price" required>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="desc">Descrição do Produto</label>
+                                <input type="text" value="{{ product.desc }}" name="desc" class="form-control" id="desc" required>
+                            </div>
+                            
+                        <div class="form-group col-6">
+                            <label for="input-div">Imagem do Produto</label>
+                            <div class="custom-file" id="input-div">
+                                <input type="file" name="image" class="custom-file-input" id="product_image">
+                                <label class="custom-file-label" for="product_image">Envie uma imagem</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" >Salvar</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+{% endblock %}

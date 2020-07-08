@@ -6,7 +6,7 @@ models = Blueprint('models', __name__)
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    role = db.Column(db.String(5), nullable=False)  # Role of the user, limits the access to certain pages
+    role = db.Column(db.Enum("user", "admin"), nullable=False, default='user')  # Role of the user, limits the access to certain pages
     name = db.Column(db.String(100), nullable=False)
     surname = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
@@ -16,6 +16,7 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return f'{self.name} {self.surname}'
+
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -27,23 +28,35 @@ class Product(db.Model):
     def __repr__(self):
         return self.title
     
+
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    client_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    client_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'))
     street = db.Column(db.String(200), nullable=False)
     address_number = db.Column(db.String(10), nullable=False)
     district = db.Column(db.String(200), nullable=False)
     city = db.Column(db.String(100), nullable=False)
     cep = db.Column(db.String(10), nullable=False)
-    status = db.Column(db.String(10)) # ordered, paid, sent
+    status = db.Column(db.Enum("aguardando-pagamento", "pago", "enviado", "finalizado", name="status de pedido"), default='aguardando-pagamento')
     itens = db.relationship('ItemOrder', backref='itens')
+    price = db.Column(db.Float, nullable=False)
 
 
 class ItemOrder(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id', ondelete='CASCADE'))
     quantity = db.Column(db.Integer, nullable=False)
-    order_id = db.Column(db.Integer, db.ForeignKey('order.id'))
+    order_id = db.Column(db.Integer, db.ForeignKey('order.id', ondelete='CASCADE'))
 
     def __repr__(self):
-        return f'{Product.query.filter_by(self.product).first().title} : {self.quantity}'
+        return f'{self.quantity}x{Product.query.filter_by(id=self.product_id).first().title}'
+
+
+class PagSeguroResponse(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    code = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.String(20), nullable=False)
+    payment_url = db.Column(db.String(500), nullable=False)
+    errors = db.Column(db.String(500), nullable=True)
+    order_id = db.Column(db.Integer, db.ForeignKey('order.id', ondelete='CASCADE'))
+    

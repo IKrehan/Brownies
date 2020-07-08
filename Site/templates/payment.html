@@ -26,39 +26,54 @@
             <form class="form-row" action="/pagamento" method="POST">
                 <h1 class="text-center col-12">Pagamento</h1>
 
-                <div class="form-group col-12 itens-box">
-                    <div class="row">
-                        <h5 class="col-8">Produto</h5>
-                        <h5 class="col-2 text-center">Quantidade</h5>
-                        <h5 class="col-2 text-center">Valor</h5 >
-                    </div>
-                    <hr>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Produto</th>
+                            <th scope="col">Quantidade</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </a>
+                    </thead>
+        
+                    {% for product, quantity in orders.items() %}
+                    <tbody>
+                        <tr style="cursor: pointer;">
+                            <td>{{ product }} (R${{ ("%.2f"|format(prices[product])|string).replace('.', ',') }})</td>
+                            <td><input class="border-0" type="number" name="quantity_payment{{loop.index}}" value="{{ quantity }}"></td>
+                            <td>R${{ ("%.2f"|format(quantity|float * prices[product]|float)|string).replace('.', ',') }}</td>
+                            
+                            <td>
+                                <a type="button" data-toggle="modal" data-target="#modalDelete">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+        
+                                <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="modalDeleteLabel">Deseja apagar este item?</h5>
+                                        </div>
+                                        <div class="modal-footer mx-auto">
+                                          <a role="button" href="{{ url_for('views.payment_remove_session', product=product) }}" class="btn btn-danger">Apagar</a>
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        </div>
+        
+                                      </div>
+                                    </div>
+                                  </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table> 
+
+
+                <div class="form-group row justify-content-end mr-5 col-12">
+                    <h5 class="d-inline mx-2">Subtotal:</h5>
+                    <h5 class="d-inline mr-5"></h5 >
                 </div>
-
-                {% for product, quantity in orders.items() %}
-                
-                <div class="form-group col-12">
-                    <div class="row">
-                        <h5 class="product-name col-8">{{ product }} (R${{ ("%.2f"|format(prices[product])|string).replace('.', ',') }})</h5>
-                        <h5 class="product-quantity col-2 text-center">{{ quantity }}</h5>
-                        {% set price = (quantity|float * prices[product]|float) %}
-                        {% set price = "%.2f"|format(price)|string %}
-                        <h5 class="product-price col-2 text-center">R${{ price.replace('.', ',') }}</h5 >
-                    </div>
-                    <hr>
-                </div>
-
-                {% endfor %} 
-
-
-                <div class="form-group col-12 subtotal-box">
-                    <div class="row justify-content-between py-2">
-                        <h5 class="product-name col-8">Subtotal</h5>
-                        {% set subtotal = "%.2f"|format(subtotal)|string %}
-                        <h5 class="product-price col-2 text-center">R${{ subtotal.replace('.', ',') }}</h5 >
-                    </div>
-                </div>
-
 
                 <input type="submit" name="" value="Confirmar Pedido">
             </form>
@@ -77,7 +92,7 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
 
-    <script  type="text/javascript" src="{{ url_for('static', filename='js/cep-autocomplete.js') }}"></script>
+    <script  type="text/javascript" src="{{ url_for('static', filename='js/subtotal.js') }}"></script>
 
 </body>
 </html>

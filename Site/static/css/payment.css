@@ -32,17 +32,6 @@ body.row {
     min-width: 300px;
 }
 
-.box input,.box select {
-    background: none;
-    margin: 20px auto;
-    outline: none;
-    color:black;
-    border-radius: 24px;
-    transition: 0.25s;
-    background-color: #e6e6e6;
-}
-
-
 .box input[type = "submit"]{
     width: 25%;
     min-width: 150px;
@@ -60,10 +49,10 @@ body.row {
     background-color: #3498db;
 }
 
-.box input[type="submit"]:hover {
-    background: #2ecc71;
+.fa-trash-alt:hover {
+    color: red;
 }
 
-.subtotal-box {
-    background-color: gray;
+.box input[type="submit"]:hover {
+    background: #2ecc71;
 }

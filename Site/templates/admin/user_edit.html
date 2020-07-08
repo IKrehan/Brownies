@@ -1,0 +1,71 @@
+{% extends 'admin/base.html' %}
+
+{% block page %}
+
+<div class="box mx-auto">
+        <div class="mx-auto">
+            <div class="title mt-5 mb-2">
+                <h1 class="d-inline ml-4">{{ user.email }}</h1>
+
+                <div class="modal fade" id="modalDelete{{ user.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="modalDelete{{ user.id }}Label">Deseja apagar este item?</h5>
+                        </div>
+                        <div class="modal-footer mx-auto">
+                          <a role="button" href="{{ url_for('views.admin_user_delete', id=user.id) }}" class="btn btn-danger">Apagar</a>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                <hr class="mx-auto">
+            </div>
+        </div>
+
+        <div class="mx-auto">
+            <form action="/admin/usuarios/{{user.id}}/editar" method="POST">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Nome</label>
+                            <input type="text"  value = "{{ user.name }}" name="name" class="form-control" id="name">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="surname">Sobrenome</label>
+                            <input type="text" value="{{ user.surname }}" name="surname" class="form-control" id="surname">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="email">Email</label>
+                            <input type="text" value = "{{ user.email }}" name="email" class="form-control" id="email">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="phone">Telefone</label>
+                            <input type="text" value = "{{ user.phone }}" name="phone" class="form-control" id="phone">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="role">Cargo</label>
+                            <select class="form-control" name="role" id="role">
+                                {% if user.role == 'admin' %}
+                                    <option value="user">user</option>
+                                    <option value="admin" selected>admin</option>
+                                {% else %}
+                                <option value="user" selected>user</option>
+                                <option value="admin">admin</option>
+                                {% endif %}
+                              </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

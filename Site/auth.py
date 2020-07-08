@@ -1,7 +1,8 @@
 from flask import Blueprint
+from pagseguro import PagSeguro
 
-from .extensions import render_template, url_for, redirect, request, flash, generate_password_hash, check_password_hash, login_user, logout_user, login_required
-from .models import db, User
+from .extensions import render_template, url_for, redirect, request, flash, generate_password_hash, check_password_hash, login_user, logout_user, login_required, current_user
+from .models import db, User, Order, Product
 
 auth = Blueprint('auth', __name__)
 
@@ -19,6 +20,11 @@ def signup_post():
     phone = request.form.get('phone')
     password = request.form.get('password')
 
+    remove_chars = ['(', ')', '-', ' ']
+
+    for char in remove_chars:
+        phone = phone.replace(char, '')
+
     user = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
 
     if user:    # if a user is found the page reload
@@ -26,7 +32,7 @@ def signup_post():
         return redirect(url_for('auth.signup'))
 
     # create new user with the form data. Hash the password so plaintext version isn't saved.
-    new_user = User(role='user', name=name, surname=surname, email=email, phone=phone, password=generate_password_hash(password, method='sha256'))
+    new_user = User(name=name, surname=surname, email=email, phone=phone, password=generate_password_hash(password, method='sha256'))
 
     # add the new user to the database
     db.session.add(new_user)
@@ -64,3 +70,41 @@ def login_post():
 def logout():
     logout_user()
     return redirect(url_for('views.homepage'))
+
+
+@auth.route('/pagamento/validacao/<int:order_id>')
+@login_required
+def paymentValidation(order_id):
+
+    config = {
+    'sandbox': True,
+    'USE_SHIPPING': False
+    }
+
+    pg = PagSeguro(email="seuemail@dominio.com", token="ABCDEFGHIJKLMNO", config=config)
+
+    pg.sender = {
+    "name": current_user.name + current_user.surname,
+    "area_code": current_user.phone[:2],
+    "phone": current_user.phone[2:],
+    "email": current_user.email,
+    }
+
+    pg.reference = order_id
+
+    pg.extra_amount = 0
+
+    order = Order.query.filter_by(id=order_id).first()
+    itens = order.itens
+
+    for item in itens:
+        product = Product.query.filter_by(id=item.id)
+        
+        pg.items.append(
+            {"id": product.id, "description": product.desc, "amount": product.price, "quantity": item.quantity, "weight": None},
+            )
+    
+    pg.redirect_url = url_for('views.thanks')
+
+
+    return

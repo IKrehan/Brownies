@@ -43,6 +43,10 @@ html {
 
 /* ----------- Home -----------*/
 
+main {
+    background-color:#2b1d11;
+}
+
 .banner-btn {
     position: absolute;
     margin-top: -25%;
