@@ -196,18 +196,19 @@ def notification_view(request):
 
     order = Order.query.filter_by(id=notification_data['reference'][3:]).first()
 
-    if notification_data['status'] == 1:
-        order.status = 'aguardado-pagamento'
-    
-    elif notification_data['status'] == 2:
-        order.status = 'cancelado'
+    def dbUpdate(order):
+        if notification_data['status'] == 1:
+            order.status = 'aguardado-pagamento'
+        
+        elif notification_data['status'] == 2:
+            order.status = 'cancelado'
 
-    elif notification_data['status'] == 3:
-        order.status = 'pago'
+        elif notification_data['status'] == 3:
+            order.status = 'pago'
 
-    db.session.commit()
+        db.session.commit()
 
-    return ''
+    return dbUpdate(order)
 
 # ------------------------------------------------------------------------------------------------
 
