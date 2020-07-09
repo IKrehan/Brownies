@@ -116,6 +116,18 @@ def payment_post():
         cep = session['cep']
 
 
+        pg.shipping = {
+        "type": pg.SEDEX,
+        "street": street,
+        "number": number,
+        "complement": "",
+        "district": district,
+        "postal_code": cep,
+        "city": city,
+        "state": "CE",
+        "country": "BRA"
+    }
+
         new_order = Order(client_id=current_user.id, street=street, address_number=number, 
         district=district, city=city, cep=cep, price=session['subtotal'])
         db.session.add(new_order)
@@ -176,7 +188,7 @@ def payment_remove_session(product):
 def thanks():
     return 'Obrigado pela compra'
 
-@views.route('/notificacao')
+@views.route('/notificacao', methods=['POST'])
 def notification_view(request):
     notification_code = request.POST['notificationCode']
     pg = PagSeguro(email="irvigkrehan@hotmail.com", token="6B1E3EF957F84EF4913EFDA3B76D6D84")
