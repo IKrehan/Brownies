@@ -190,7 +190,7 @@ def thanks():
 
 @views.route('/notificacao', methods=['POST'])
 def notification_view(request):
-    notification_code = request.post['notificationCode']
+    notification_code = request.data['notificationCode']
     pg = PagSeguro(email="irvigkrehan@hotmail.com", token="6B1E3EF957F84EF4913EFDA3B76D6D84")
     notification_data = pg.check_notification(notification_code)
 
