@@ -1,4 +1,6 @@
 Flask
 Flask-SQLAlchemy
 Flask-Login
-mysqlclient
+pagseguro
+werkzeug
+gunicorn==20.0.4

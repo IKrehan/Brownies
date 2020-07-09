@@ -37,16 +37,16 @@
                             <a class="nav-link active nav-text" href="{{ url_for('views.homepage') }}#brownies">Brownies</a>
                         </li>
 
-                        <li class="nav-item px-3 my-auto">
+                        <!-- <li class="nav-item px-3 my-auto">
                             <a class="nav-link active nav-text" href="{{ url_for('views.homepage') }}#assinaturas">Assinaturas</a>
+                        </li> -->
+
+                        <li class="nav-item px-3 my-auto">
+                            <a class="nav-link active" href="https://www.instagram.com/ph.brownies/" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
                         </li>
 
                         <li class="nav-item px-3 my-auto">
-                            <a class="nav-link active" href="https://www.instagram.com/ph.brownies/"><i class="fab fa-instagram fa-2x"></i></a>
-                        </li>
-
-                        <li class="nav-item px-3 my-auto">
-                            <a class="nav-link active" href="https://api.whatsapp.com/send?phone=558599930884&text=&source=&data=&app_absent="><i class="fab fa-whatsapp fa-2x"></i></a>
+                            <a class="nav-link active" href="https://api.whatsapp.com/send?phone=558599930884&text=&source=&data=&app_absent=" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a>
                         </li>
 
                         {% if current_user.is_authenticated: %}
