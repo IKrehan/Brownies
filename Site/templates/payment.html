@@ -21,8 +21,8 @@
 
 <body class="row">
 
-    <div class="encomenda-form mx-auto align-middle">
-        <div class="box mx-auto align-middle">
+    <div class="box mx-auto align-middle">
+        <div class="mx-5 align-middle">
                 <h1 class="text-center col-12">Pagamento</h1>
                 <small class="text-muted"> Ao mudar a quantidade de produtos aperte o botão ao lado para confirmar a mudança e recalcular o total. </small>
                 <table class="table table-hover">
@@ -44,8 +44,8 @@
 
                             <td>
                                 <form action="{{ url_for('views.payment_edit_session', product=product) }}", method="POST" id="checkqty{{loop.index}}">
-                                <input class="border-0" id="quantity" type="number" name="quantity_payment-{{product}}" value="{{ quantity }}">
-                                <a href="javascript:$('#checkqty{{loop.index}}').submit();"><i class="fas fa-check"></i></a>
+                                <input class="border-0 input-qty" id="quantity" type="number" name="quantity_payment-{{product}}" value="{{ quantity }}">
+                                <a class="btn btn-lg" role="button" href="javascript:$('#checkqty{{loop.index}}').submit();"><i class="fas fa-check"></i></a>
                                 </form>
                             </td>
 

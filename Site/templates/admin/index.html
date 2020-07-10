@@ -4,7 +4,7 @@
 
 <div class="box mx-auto mt-5">
     <div class="row justify-content-center">
-        <div class="col-4">
+        <div class="col-sm-4 col-xs-12 m-xs-1">
             <a href="{{ url_for('views.admin_orders') }}" style="text-decoration: none">
                 <div class="card">
                     <div class="card-body">
@@ -15,7 +15,7 @@
             </a>
         </div>
 
-        <div class="col-4">
+        <div class="col-sm-4 col-xs-12 m-xs-1">
             <a href="{{ url_for('views.admin_products') }}" style="text-decoration: none">
                 <div class="card">
                     <div class="card-body">
@@ -26,7 +26,7 @@
             </a>
         </div>
 
-        <div class="col-4">
+        <div class="col-sm-4 col-xs-12 m-xs-1">
             <a href="{{ url_for('views.admin_users') }}" style="text-decoration: none">
                 <div class="card">
                     <div class="card-body">
@@ -39,7 +39,7 @@
     </div>
 
     <div class="row justify-content-between mt-5">
-        <div class="card col-6 text-center mb-5">
+        <div class="card col-sm-6 col-xs-12 text-center mb-5">
             <h5 class="card-header">Pedidos aguardando pagamento</h5>
             <div class="card-body">
             <h5 class="card-title">{{ ordered|length }} Pedidos</h5>
@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <div class="card col-6 text-center mb-5">
+        <div class="card col-sm-6 col-xs-12 text-center mb-5">
             <h5 class="card-header">Pedidos com pagamento confirmado</h5>
             <div class="card-body">
             <h5 class="card-title">{{ paid|length }} Pedidos</h5>
@@ -60,7 +60,7 @@
     </div>
     
     <div class="row justify-content-between">
-        <div class="card col-6 text-center mb-5">
+        <div class="card col-sm-6 col-xs-12 text-center mb-5">
             <h5 class="card-header">Pedidos enviados</h5>
             <div class="card-body">
             <h5 class="card-title">{{ sent|length }} Pedidos</h5>
@@ -69,7 +69,7 @@
             </div>
         </div>
 
-        <div class="card col-6 text-center mb-5">
+        <div class="card col-sm-6 col-xs-12 text-center mb-5">
             <h5 class="card-header">Pedidos Finalizados</h5>
             <div class="card-body">
             <h5 class="card-title">{{ done|length }} Pedidos</h5>

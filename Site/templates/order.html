@@ -26,35 +26,35 @@
             <form class="form-row" action="/encomenda" method="POST">
                 <h1 class="text-center col-12">Encomenda</h1>
 
-                <div class="form-group col-9">
+                <div class="form-group col-sm-9 col-xs-12">
                     <input class="form-control" type="text" size="60" name="street" id="street" placeholder="Endereço" required>
                 </div>
 
-                <div class="form-group col-3">
+                <div class="form-group col-sm-3 col-xs-12">
                     <input class="form-control" type="text" name="number" id="number" placeholder="Número" required>
                 </div>      
 
-                <div class="form-group col-4">
+                <div class="form-group col-sm-4 col-xs-12">
                     <input class="form-control" type="text" size="40" name="district" id="district" placeholder="Bairro" required>
                 </div>
 
-                <div class="form-group col-4">
+                <div class="form-group col-sm-4 col-xs-12">
                     <input class="form-control" type="text" size="40" name="city" id="city" placeholder="Cidade" required>
                 </div>
 
-                <div class="form-group col-4">
+                <div class="form-group col-sm-4 col-xs-12">
                     <input class="form-control" type="text" size="10" maxlength="9" name="cep" id="cep" placeholder="Cep" autofocus required>
                 </div>  
 
-                <div class="form-group col-12 row">
-                    <h3 class="col-4">Opções de Brownies</h3>
-                    <p class="col-8 my-auto">Marque a caixa referente ao brownie desejado e escolha a quantidade</p>
+                <div class="form-group col-sm-12 col-xs-12 row">
+                    <h3 class="col-sm-6 col-xs-12">Opções de Brownies</h3>
+                    <p class="col-sm-6 col-xs-12 my-auto">Marque a caixa referente ao brownie desejado e escolha a quantidade</p>
                     <hr class="col-12">
                 </div>
 
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
-                    <div class="col-12 notification">
+                    <div class="col-sm-12 col-xs-12 notification">
                         {{ messages[0] }}
                     </div>  
                 {% endif %}

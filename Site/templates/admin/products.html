@@ -2,7 +2,7 @@
 
 {% block page %}
 
-    <div class="box mx-auto mt-5 mb-2">
+    <div class="box mx-auto mt-5 mb-2 d-none d-sm-block">
         <h1 class="d-inline">Produtos</h1>
 
         <div class="float-right">
@@ -11,6 +11,14 @@
 
         <div class="float-right">
             <a href="{{ url_for('views.product_add') }}" class="btn btn-primary mx-4" role="button" aria-pressed="true">Adicionar</a>
+        </div>
+    </div>
+
+    <div class="box mx-auto d-block d-sm-none">
+        <h1>Produtos</h1>
+        <div class="row">
+            <input class="col-7 form-control" type="search" id="tableSearch" onkeyup="searchInTable()" placeholder="Procurar" aria-label="Search">
+            <a href="{{ url_for('views.product_add') }}" class="btn btn-primary col-4 ml-2" role="button" aria-pressed="true">Adicionar</a>
         </div>
     </div>
 

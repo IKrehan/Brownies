@@ -13,6 +13,7 @@ body{
 
 .box{
     width: 20%;
+    min-width: 250px;
     padding: 40px;
     position: absolute;
     top: 50%;

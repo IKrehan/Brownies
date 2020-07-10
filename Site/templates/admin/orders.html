@@ -2,13 +2,18 @@
 
 {% block page %}
 
-    <div class="box mx-auto mt-5 mb-3">
+    <div class="box mx-auto mt-5 mb-3 d-none d-sm-block">
         <h1 class="d-inline">Pedidos {{ status }}</h1>
 
 
         <div class="float-right">
             <input class="form-control mr-sm-2" type="search" id="tableSearch" onkeyup="searchInTable()" placeholder="Procurar" aria-label="Search">
         </div>
+    </div>
+
+    <div class="box mx-auto d-block d-sm-none">
+        <h1>Pedidos {{status}}</h1>
+        <input class="form-control" type="search" id="tableSearch" onkeyup="searchInTable()" placeholder="Procurar" aria-label="Search">
     </div>
 
     <div class="box mx-auto">

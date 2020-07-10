@@ -9,11 +9,12 @@ body.row {
     background-color: sienna;
 }
 
-.encomenda-form{
-    width: 60%;
-    min-width: 500px;
+.box {
+    width: 70%;
+    min-width: 350px;
     border-radius: 20px;
     background-color: white;
+    
 
     margin-top: 3%;
     margin-bottom: 3%;
@@ -31,10 +32,6 @@ body.row {
     color: grey;
 }
 
-.box {
-    width: 80%;
-    min-width: 300px;
-}
 
 .box input,.box select {
     background: none;

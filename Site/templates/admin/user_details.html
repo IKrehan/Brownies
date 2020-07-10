@@ -3,33 +3,44 @@
 {% block page %}
 
 <div class="box mx-auto">
-        <div class="mx-auto">
+        <div class="mx-auto d-none d-sm-block">
             <div class="title mt-5 mb-2">
                 <h1 class="d-inline ml-4">{{ user.email }}</h1>
 
                 <div class="float-right d-inline mx-3">
                     <a role="button" class="btn btn-primary m-2" href="{{ url_for('views.admin_usuario_edit', id=user.id) }}">Editar</a>
 
-                    <button type="button" class="btn btn-danger m-2" data-toggle="modal" data-target="#modalDelete{{ user.id }}">
-                        Apagar
-                    </button>
+                    <button type="button" class="btn btn-danger m-2" data-toggle="modal" data-target="#modalDelete{{ user.id }}">Apagar</button>
                 </div>
 
-                <div class="modal fade" id="modalDelete{{ user.id }}" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="modalDelete{{ user.id }}Label">Deseja apagar este item?</h5>
-                        </div>
-                        <div class="modal-footer mx-auto">
-                          <a role="button" href="{{ url_for('views.admin_user_delete', id=user.id) }}" class="btn btn-danger">Apagar</a>
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                 <hr class="mx-auto">
+            </div>
+        </div>
+
+        <div class="mx-auto mb-4 d-block d-sm-none">
+            <h1 class="">{{ user.email }}</h1>
+    
+            <div class="d-inline">
+                <a role="button" class="btn btn-primary m-2" href="{{ url_for('views.admin_usuario_edit', id=user.id) }}">Editar</a>
+            </div>
+    
+            <div class="d-inline">
+                <button type="button" class="btn btn-danger m-2" data-toggle="modal" data-target="#modalDelete{{ user.id }}">Apagar</button>
+            </div>
+        </div>
+    
+
+        <div class="modal fade" id="modalDelete{{ user.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalDelete{{ user.id }}Label">Deseja apagar este item?</h5>
+                </div>
+                <div class="modal-footer mx-auto">
+                  <a role="button" href="{{ url_for('views.admin_user_delete', id=user.id) }}" class="btn btn-danger">Apagar</a>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+              </div>
             </div>
         </div>
 
@@ -37,29 +48,29 @@
             <form>
                 <fieldset disabled>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 col-xs-12">
                             <label for="name">Nome</label>
                             <input type="text"  value = "{{ user.name }}" id="disabledTextInput" class="form-control" id="name">
                         </div>
 
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 col-xs-12">
                             <label for="name">Sobrenome</label>
                             <input type="text" value="{{ user.surname }}" id="disabledTextInput" class="form-control" id="name">
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 col-xs-12">
                             <label for="address">Email</label>
                             <input type="text" value = "{{ user.email }}" id="disabledTextInput" class="form-control" id="address">
                         </div>
 
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-3 col-xs-12">
                             <label for="address">Telefone</label>
                             <input type="text" value = "{{ user.phone }}" id="disabledTextInput" class="form-control" id="address">
                         </div>
 
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-3 col-xs-12">
                             <label for="address">Cargo</label>
                             <input type="text" value = "{{ user.role }}" id="disabledTextInput" class="form-control" id="address">
                         </div>
