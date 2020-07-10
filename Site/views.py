@@ -137,22 +137,14 @@ def payment_post():
         pg.extra_amount = 0
 
         itens = []
-        i = 1
         # É possivel adicionar um record ao db usando uma lista ao invés de instanciar um objeto como feito anteriormente
         for product, quantity in orders.items():  # cria uma lista de dicionários, dicionários esses que representam um objeto da tabela
             item = {}
 
-            new_quantity = request.form.get('quantity_payment'+str(i))
-            if quantity != new_quantity:        
-                item['quantity'] = new_quantity
-            
-            else:
-                item['quantity'] = quantity
-
+            item['quantity'] = quantity
             item['product_id'] = Product.query.filter_by(title=product).first().id 
             item['order_id'] = new_order.id
 
-            i+=1
             itens.append(item)
             
         for item in itens:                      #Passa pela lista de dicionarios e adiciona cada um ao banco de dados
@@ -172,7 +164,20 @@ def payment_post():
         db.session.commit()
     
         return redirect(response.payment_url)
+
+
+@views.route('/pagamento/editaritem/<string:product>', methods=['POST'])
+@login_required
+def payment_edit_session(product):
     
+    quantity = request.form.get(f'quantity_payment-{product}')
+
+    orders = session['orders']
+    orders[product] = quantity
+    session['orders'] = orders
+
+    return redirect(url_for('views.payment'))
+
 @views.route('/pagamento/removeritem/<string:product>')
 @login_required
 def payment_remove_session(product):
@@ -190,7 +195,7 @@ def thanks():
 
 @views.route('/notificacao', methods=['POST'])
 def notification_view(request):
-    notification_code = request.data['notificationCode']
+    notification_code = request.POST['notificationCode']
     pg = PagSeguro(email="irvigkrehan@hotmail.com", token="6B1E3EF957F84EF4913EFDA3B76D6D84")
     notification_data = pg.check_notification(notification_code)
 

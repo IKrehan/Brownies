@@ -53,6 +53,10 @@ body.row {
     color: red;
 }
 
+.fa-check:hover {
+    color: greenyellow;
+}
+
 .box input[type="submit"]:hover {
     background: #2ecc71;
 }

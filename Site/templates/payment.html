@@ -23,9 +23,8 @@
 
     <div class="encomenda-form mx-auto align-middle">
         <div class="box mx-auto align-middle">
-            <form class="form-row" action="/pagamento" method="POST">
                 <h1 class="text-center col-12">Pagamento</h1>
-
+                <small class="text-muted"> Ao mudar a quantidade de produtos aperte o botão ao lado para confirmar a mudança e recalcular o total. </small>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -37,15 +36,24 @@
                     </a>
                     </thead>
         
-                    {% for product, quantity in orders.items() %}
+                    
                     <tbody>
-                        <tr style="cursor: pointer;">
+                        {% for product, quantity in orders.items() %}
+                        <tr>
                             <td>{{ product }} (R${{ ("%.2f"|format(prices[product])|string).replace('.', ',') }})</td>
-                            <td><input class="border-0" type="number" name="quantity_payment{{loop.index}}" value="{{ quantity }}"></td>
-                            <td>R${{ ("%.2f"|format(quantity|float * prices[product]|float)|string).replace('.', ',') }}</td>
-                            
+
                             <td>
-                                <a type="button" data-toggle="modal" data-target="#modalDelete">
+                                <form action="{{ url_for('views.payment_edit_session', product=product) }}", method="POST" id="checkqty{{loop.index}}">
+                                <input class="border-0" id="quantity" type="number" name="quantity_payment-{{product}}" value="{{ quantity }}">
+                                <a href="javascript:$('#checkqty{{loop.index}}').submit();"><i class="fas fa-check"></i></a>
+                                </form>
+                            </td>
+
+                            <td class="total_price">R${{ ("%.2f"|format(prices[product]|float * quantity|float)|string).replace('.', ',') }}</td>
+
+                            <td class="price" hidden>{{ prices[product]|float * quantity|float }}</td>
+                            <td>
+                                <a type="button" data-toggle="modal" data-target="#modalDelete" style="cursor: pointer;">
                                     <i class="far fa-trash-alt"></i>
                                 </a>
         
@@ -65,24 +73,28 @@
                                   </div>
                             </td>
                         </tr>
+                        {% endfor %}
+                        <tfoot>
+                            <tr>
+                                <td><b> Subtotal </b></td>
+                                <td></td>
+                                
+                                <td id="prices_sum">
+                                </td>
+    
+                                <td></td>
+                            </tr>
+                        </tfoot> 
                     </tbody>
-                    {% endfor %}
-                </table> 
-
-
-                <div class="form-group row justify-content-end mr-5 col-12">
-                    <h5 class="d-inline mx-2">Subtotal:</h5>
-                    <h5 class="d-inline mr-5"></h5 >
-                </div>
-
+                </table>
+            <form class="form-row" action="/pagamento" method="POST">
                 <input type="submit" name="" value="Confirmar Pedido">
             </form>
         </div>
     </div>
     
 
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.js"
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -92,7 +104,34 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
 
-    <script  type="text/javascript" src="{{ url_for('static', filename='js/subtotal.js') }}"></script>
+    <script>
+        function tableInfo() {
+            $('table thead th').each(function(i) {
+                calculateColumn(i);
+            });
+        };
+
+        function calculateColumn(index) {
+            var total = 0;
+            $('table tr').each(function() {
+                var value = parseFloat($('td', this).eq(index).text());
+                if (!isNaN(value)) {
+                    total += value;
+                }
+            });
+            if (total != 0) {
+                $('table tfoot td').eq(index-1).text('R$' + total.toFixed(2).toString().replace(".", ","));
+            }
+        }
+
+        $(document).ready(function() {
+            tableInfo();
+        });
+
+        var input = $('#quantity'), val = input.val();
+        input.keypress(tableInfo);
+
+    </script>
 
 </body>
 </html>
