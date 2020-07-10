@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PH Brownies</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/43fb59542f.js" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="{{ url_for('static', filename='img/icon.ico') }}" type="image/x-icon" />
+</head>
+
+<body class="w-100 mx-auto m-0 p-0">
+
+        <main>
+            <nav class="navbar sticky-top navbar-expand-lg navbar-dark d-none d-sm-block">
+                <div class="collapse navbar-collapse row justify-content-between" id="navbarNav">
+
+                    <a class="navbar-brand col-5 mx-auto" href="#">
+                        <img src="{{ url_for('static', filename='img/logo.png') }}" width="135" height="41.4" class="d-inline-block align-top" loading="lazy">
+                    </a>
+
+                    <ul class="navbar-nav col-6">
+                        <li class="nav-item px-3 my-auto">
+                            <a class="nav-link active nav-text" href="{{ url_for('views.homepage') }}#home">Home</a>
+                        </li>
+
+                        <li class="nav-item px-3 my-auto">
+                            <a class="nav-link active nav-text" href="{{ url_for('views.homepage') }}#brownies">Brownies</a>
+                        </li>
+
+                        <!-- <li class="nav-item px-3 my-auto">
+                            <a class="nav-link active nav-text" href="{{ url_for('views.homepage') }}#assinaturas">Assinaturas</a>
+                        </li> -->
+
+                        <li class="nav-item px-3 my-auto">
+                            <a class="nav-link active" href="https://www.instagram.com/ph.brownies/" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+                        </li>
+
+                        <li class="nav-item px-3 my-auto">
+                            <a class="nav-link active" href="https://api.whatsapp.com/send?phone=558599930884&text=&source=&data=&app_absent=" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a>
+                        </li>
+
+                        {% if current_user.is_authenticated: %}
+                        <li class="nav-item px-3 my-auto">
+                            <a class="nav-link logout py-auto" href="/logout">Deslogar</a>
+                        </li>
+                        {% endif %}
+
+                        {% if not current_user.is_authenticated: %}
+                        <li class="nav-item px-3 my-auto">
+                            <a class="nav-link logout py-auto" href="/login">Login</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+
+
+            {% block content %}
+                
+            {% endblock content %}
+            
+
+            <footer class="footer">
+                <div style="color:#202020;">.</div>
+                <div class="text-center copyright">
+                    <h6 class="font-weight-light">©2020 PH Brownies | Versão 1.0</h6>
+                </div>
+            </footer>
+            </main>
+        
+        
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+            <script src="{{ url_for('static', filename='bcSwipe.js') }}"></script>
+        </body>
+        
+        </html>

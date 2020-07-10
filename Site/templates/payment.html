@@ -25,68 +25,71 @@
         <div class="mx-5 align-middle">
                 <h1 class="text-center col-12">Pagamento</h1>
                 <small class="text-muted"> Ao mudar a quantidade de produtos aperte o botão ao lado para confirmar a mudança e recalcular o total. </small>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Produto</th>
-                            <th scope="col">Quantidade</th>
-                            <th scope="col">Valor</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </a>
-                    </thead>
-        
-                    
-                    <tbody>
-                        {% for product, quantity in orders.items() %}
-                        <tr>
-                            <td>{{ product }} (R${{ ("%.2f"|format(prices[product])|string).replace('.', ',') }})</td>
-
-                            <td>
-                                <form action="{{ url_for('views.payment_edit_session', product=product) }}", method="POST" id="checkqty{{loop.index}}">
-                                <input class="border-0 input-qty" id="quantity" type="number" name="quantity_payment-{{product}}" value="{{ quantity }}">
-                                <a class="btn btn-lg" role="button" href="javascript:$('#checkqty{{loop.index}}').submit();"><i class="fas fa-check"></i></a>
-                                </form>
-                            </td>
-
-                            <td class="total_price">R${{ ("%.2f"|format(prices[product]|float * quantity|float)|string).replace('.', ',') }}</td>
-
-                            <td class="price" hidden>{{ prices[product]|float * quantity|float }}</td>
-                            <td>
-                                <a type="button" data-toggle="modal" data-target="#modalDelete" style="cursor: pointer;">
-                                    <i class="far fa-trash-alt"></i>
-                                </a>
-        
-                                <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="modalDeleteLabel">Deseja apagar este item?</h5>
-                                        </div>
-                                        <div class="modal-footer mx-auto">
-                                          <a role="button" href="{{ url_for('views.payment_remove_session', product=product) }}" class="btn btn-danger">Apagar</a>
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                        </div>
-        
-                                      </div>
-                                    </div>
-                                  </div>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                        <tfoot>
+                
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
-                                <td><b> Subtotal </b></td>
-                                <td></td>
-                                
-                                <td id="prices_sum">
-                                </td>
-    
-                                <td></td>
+                                <th scope="col">Produto</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col"></th>
                             </tr>
-                        </tfoot> 
-                    </tbody>
-                </table>
+                        </a>
+                        </thead>
+            
+                        
+                        <tbody>
+                            {% for product, quantity in orders.items() %}
+                            <tr>
+                                <td>{{ product }} (R${{ ("%.2f"|format(prices[product])|string).replace('.', ',') }})</td>
+
+                                <td>
+                                    <form action="{{ url_for('views.payment_edit_session', product=product) }}", method="POST" id="checkqty{{loop.index}}">
+                                    <input class="border-0 input-qty" id="quantity" type="number" name="quantity_payment-{{product}}" value="{{ quantity }}">
+                                    <a class="btn btn-lg" role="button" href="javascript:$('#checkqty{{loop.index}}').submit();"><i class="fas fa-check"></i></a>
+                                    </form>
+                                </td>
+
+                                <td class="total_price">R${{ ("%.2f"|format(prices[product]|float * quantity|float)|string).replace('.', ',') }}</td>
+
+                                <td class="price" hidden>{{ prices[product]|float * quantity|float }}</td>
+                                <td>
+                                    <a type="button" data-toggle="modal" data-target="#modalDelete" style="cursor: pointer;">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+            
+                                    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="modalDeleteLabel">Deseja apagar este item?</h5>
+                                            </div>
+                                            <div class="modal-footer mx-auto">
+                                            <a role="button" href="{{ url_for('views.payment_remove_session', product=product) }}" class="btn btn-danger">Apagar</a>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            </div>
+            
+                                        </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            <tfoot>
+                                <tr>
+                                    <td><b> Subtotal </b></td>
+                                    <td></td>
+                                    
+                                    <td id="prices_sum">
+                                    </td>
+        
+                                    <td></td>
+                                </tr>
+                            </tfoot> 
+                        </tbody>
+                    </table>
+                </div>
             <form class="form-row" action="/pagamento" method="POST">
                 <input type="submit" name="" value="Confirmar Pedido">
             </form>

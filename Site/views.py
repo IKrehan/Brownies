@@ -156,7 +156,7 @@ def payment_post():
             {"id": product.id, "description": product.desc, "amount": "{:.2f}".format(product.price), "quantity": item['quantity'], "weight": None},
             )
         pg.notification_url = request.url_root + "/notificacao"
-        pg.redirect_url = request.url_root + "/obrigado"
+        pg.redirect_url = request.url_root
         response = pg.checkout()
         new_response = PagSeguroResponse(code=response.code, date=response.date, payment_url=response.payment_url, errors=response.errors, order_id=new_order.id)
         db.session.add(new_response)
@@ -188,10 +188,6 @@ def payment_remove_session(product):
 
     return redirect(url_for('views.payment'))
 
-
-@views.route('/obrigado')
-def thanks():
-    return 'Obrigado pela compra'
 
 @views.route('/notificacao', methods=['POST'])
 def notification_view(request):
