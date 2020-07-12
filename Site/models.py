@@ -37,6 +37,7 @@ class Order(db.Model):
     district = db.Column(db.String(200), nullable=False)
     city = db.Column(db.String(100), nullable=False)
     cep = db.Column(db.String(10), nullable=False)
+    complement = db.Column(db.String(300), nullable=False)
     status = db.Column(db.Enum("aguardando-pagamento", "pago", "enviado", "finalizado", name="status de pedido"), default='aguardando-pagamento')
     itens = db.relationship('ItemOrder', backref='itens')
     price = db.Column(db.Float, nullable=False)

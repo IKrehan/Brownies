@@ -31,4 +31,26 @@ def create_app(config_file='config.py'):
     from .auth import auth
     app.register_blueprint(auth)
 
+    # with app.app_context():
+    #     db.create_all()
+    #     print('Comandos Executados')
+
+    # with app.app_context():
+    #     a = Product(title='Brownie Padrão', img='img/browniePadrão.jpg', desc='Um brownie', price=7)
+    #     b = Product(title='Brownie 40g', img='img/brownie40g.jpg', desc='teste', price=4.5)
+    #     c = Product(title='Brownie na Latinha', img='img/brownieLatinha.jpg', desc='Um latinha com mini-brownies', price=28)
+    #     d = Product(title='Brownie na forminha de brigadeiro', img='img/brownieBrigadeiro.jpg', desc='Brownies em formato de brigadeiro', price=2.5)
+    #     db.session.add(a)
+    #     db.session.add(b)
+    #     db.session.add(c)
+    #     db.session.add(d)
+    #     db.session.commit()
+    #     print('Comandos Executados')
+
+    # with app.app_context():
+    #     new_user = User(role='admin', name='adm', surname='in', email='adm@ph.com', phone='992467222', password=generate_password_hash('123', method='sha256'))
+    #     db.session.add(new_user)
+    #     db.session.commit()
+    #     print('Comandos Executados')
+
     return app

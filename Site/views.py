@@ -35,12 +35,14 @@ def order_post():
         district = request.form.get('district')
         city = request.form.get('city')
         cep = request.form.get('cep')
+        complement = request.form.get('complement')
 
         session['street'] = street
         session['number'] = number
         session['district'] = district
         session['city'] = city
         session['cep'] = cep
+        session['complement'] = complement
 
         i = 1
         orders = {}
@@ -75,6 +77,7 @@ def payment():
         district = session['district']
         city = session['city']
         cep = session['cep']
+        complement = session['complement']
 
         subtotal = 0
         for product, quantity in orders.items():
@@ -83,7 +86,7 @@ def payment():
         session['subtotal'] = subtotal
 
         return render_template('payment.html', orders=orders, prices=prices, 
-        subtotal=subtotal, street=street, number=number, district=district, city=city, cep=cep)
+        subtotal=subtotal, street=street, number=number, district=district, city=city, cep=cep, complement=complement)
         
 
 # Nesta função estão ocorrendo 2 processos simultâneos,
@@ -114,13 +117,13 @@ def payment_post():
         district = session['district']
         city = session['city']
         cep = session['cep']
-
+        complement = session['complement']
 
         pg.shipping = {
         "type": pg.SEDEX,
         "street": street,
         "number": number,
-        "complement": "",
+        "complement": complement,
         "district": district,
         "postal_code": cep,
         "city": city,
@@ -129,7 +132,7 @@ def payment_post():
     }
 
         new_order = Order(client_id=current_user.id, street=street, address_number=number, 
-        district=district, city=city, cep=cep, price=session['subtotal'])
+        district=district, city=city, cep=cep, complement=complement, price=session['subtotal'])
         db.session.add(new_order)
         db.session.flush()
 
