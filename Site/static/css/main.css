@@ -1,10 +1,10 @@
 html {
-    font-family: 'Chewy', cursive;
+    font-family: 'Roboto', sans-serif;
     scroll-behavior: smooth;
 }
 
 .navbar {
-    font-family: 'Chewy', cursive;
+    font-family: 'Roboto', sans-serif;
     margin-bottom: -4%;
 
     background-image: linear-gradient(180deg,rgba(0,0,0,.46),transparent 89%);
@@ -12,9 +12,11 @@ html {
 
 .nav-text {
     font-size: 1.5em;
+    font-weight: 100;
 }
 
 .navbar-brand {
+    font-weight: 400;
     float: left;
 }
 
@@ -23,7 +25,7 @@ html {
 }
 
 .nav-link:hover {
-    color: #2b1d11 !important;
+    color: #c78851 !important;
 }
 
 .background-home {
@@ -34,12 +36,6 @@ html {
     margin-top: 10%;
 }
 
-.logout {
-    font-size: .8em;
-    font-family: Arial, Helvetica, sans-serif;
-    color: gray;
-    text-decoration: none;
-}
 
 /* ----------- Home -----------*/
 
@@ -55,46 +51,46 @@ main {
 
 .banner-btn a {
     margin-top: -.1%;
-    font-family: 'Chewy', cursive;
+    font-family: 'Roboto', sans-serif;
     font-size: 2em;
 }
 
 .banner-btn h1 {
     font-size: 4em;
-    font-family: 'Chewy', cursive;
-    color: #2b1d11;
-    text-shadow: 2px 2px #ece6cf;
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    font-weight: 700;
 }
 
 .banner-btn h4 {
-    font-family: 'Chewy', cursive;
-    color: #ece6cf;
-    text-shadow: 2px 2px #2b1d11;
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    font-weight: 100;
 }
 
 /* ---------- Brownies ----------*/
 
 .brownies {
-    background-color: #ece6cf;
+    background-color: #ffffff;
     margin-top: -10%;
 }
 
 .title-brown h1 {
-    font-family: 'Chewy', cursive;
-    color: #2b1d11;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
     margin-top: 2%;
 }
 
 .title-brown hr {
-    background-color: #2b1d11;
+    background-color: #000000;
     height: 1px;
     width: 3%;
     margin-top: -.2%;
 }
 
 .box-brown {
-    font-family: 'Chewy', cursive;
-    color: #2b1d11;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
     margin-top: 7%;
     margin-bottom: 10%;
 }
@@ -102,55 +98,3 @@ main {
 .box-brown h4 {
     margin-top: 6%;
 }
-
-/* --------- Assinaturas ---------*/
-
-.assinaturas {
-    background-color: #453022;
-    margin-top: -10%;
-}
-
-.title-assinaturas {
-    margin-top: 2%;
-    font-family: 'Chewy', cursive;
-    color: #ece6cf;
-}
-
-.title-assinaturas hr {
-    background-color: #ece6cf;
-    height: 1px;
-    width: 3%;
-    margin-top: -.2%;
-}
-
-.box-assinaturas {
-    font-family: 'Chewy', cursive;
-    color: #ece6cf;
-}
-
-.box-assinaturas h4 {
-    margin-top: 5%;
-    margin-bottom: 1%;
-}
-
-.assinaturas-gallery {
-    margin-top: 7%;
-}
-
-.assinaturas-last{
-    margin-top: 3%;
-}
-
-/* --------- Footer ------------*/
-
-footer {
-    background-color: #2b1d11;
-    height: 8em;
-}
-
-.copyright h6 {
-    margin-top: 2%;
-    color: #ece6cf;
-}
-
-/* ------------------------------*/
